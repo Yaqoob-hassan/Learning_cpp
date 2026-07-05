@@ -78,6 +78,11 @@ class Book {
     }
  }
 
+ bool return_book() {
+    availaible_copies = availaible_copies + 1;
+    return true;
+ }
+
  void display() {
     cout << "Book name is :" << book_name << endl;
     cout << "Book author is :" << book_author << endl;
@@ -88,7 +93,7 @@ class Book {
 };
 
 int main() {
-     char ch;
+     int n;
     // Parametrized Constructor 
   //  Book b1( "ALi", "Aslam", 15, 2);
    
@@ -114,17 +119,26 @@ int main() {
     while(1) {
         cout << "--- Library management system. --- " << endl;
         cout << "Select any one option. " << endl;
-        cout << "Do you want to borrow book." << endl;
-        cout << "y or n ? " << endl;
-        cin >> ch; 
+        cout << "1. Do you want to borrow book." << endl;
+        cout << "2. Do you want to return book." << endl;
+        cout << "3.Enter 3 to exit from program." << endl;
+        cin >> n;
 
-        if(ch == 'y') {
+        
+
+        if(n == 1) {
             b1.borrow_book();
         }
         else {
             b1.display();
-            break;
 
+        }
+        if(n == 2) {
+            b1.return_book();
+        }
+
+        if(n == 3) {
+            break;
         }
     }
   
