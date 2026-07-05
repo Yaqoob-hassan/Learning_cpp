@@ -11,22 +11,22 @@ class Book {
  int availaible_copies = 10; //  Availaible copies of that book 
 
  public:
- //  Default  constructor 
-//  Book() {
-//   book_name = "Prince";
-//   book_author = "Leonardo";
-//   total_copies = 10;
-//   availaible_copies = 10;
-
- // }
-// Default constructor 
- Book(){
-    bookName();
-    bookAuthor();
-    totalCopies();
-    availaibleCopies();
+  // Default  constructor 
+  Book() {
+  book_name = "Prince";
+  book_author = "Leonardo";
+  total_copies = 10;
+  availaible_copies = 10;
 
  }
+// Default constructor 
+//  Book(){
+//     bookName();
+//     bookAuthor();
+//     totalCopies();
+//     availaibleCopies();
+
+//  }
  // parametrized constrcutir 
  Book( string b, string a, int tc, int ac){
     book_name = b;
@@ -64,7 +64,7 @@ class Book {
     cin >> availaible_copies;
  }
 
- void borrow_book(){
+ void issue_book(){
     if (availaible_copies == 0) {
         cout << "Book not availaible" << endl;
     }
@@ -92,6 +92,15 @@ class Book {
 
 };
 
+// class Library {
+//    private:
+
+
+
+//    public: 
+
+// }
+
 int main() {
      int n;
     // Parametrized Constructor 
@@ -117,29 +126,36 @@ int main() {
 
 
     while(1) {
+        cout << endl;
         cout << "--- Library management system. --- " << endl;
         cout << "Select any one option. " << endl;
         cout << "1. Do you want to borrow book." << endl;
         cout << "2. Do you want to return book." << endl;
-        cout << "3.Enter 3 to exit from program." << endl;
+        cout << "3.Display all results." << endl;
+        cout << "4.Enter 4 to exit from program." << endl;
+        cout << endl;
         cin >> n;
 
-        
-
-        if(n == 1) {
-            b1.borrow_book();
-        }
-        else {
-            b1.display();
-
-        }
-        if(n == 2) {
-            b1.return_book();
+        if(n == 4) {
+        break;
         }
 
-        if(n == 3) {
-            break;
-        }
+      switch(n) {
+        case 1:
+        b1.issue_book();
+        break;
+
+        case 2 :
+        b1.return_book();
+        break;
+
+
+        case 3:
+        b1.display();
+        break;
+    }
+  
+
     }
   
 
