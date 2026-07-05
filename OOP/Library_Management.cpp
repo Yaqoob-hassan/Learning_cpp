@@ -5,12 +5,44 @@ using namespace std;
 class Book {
  private:
 
- string book_name;
- string book_author;
- int total_copies;
- int availaible_copies = 10;
+ string book_name; //  Book name 
+ string book_author; // Book Author 
+ int total_copies; //  Total copies
+ int availaible_copies = 10; //  Availaible copies of that book 
 
  public:
+ //  Default  constructor 
+//  Book() {
+//   book_name = "Prince";
+//   book_author = "Leonardo";
+//   total_copies = 10;
+//   availaible_copies = 10;
+
+ // }
+// Default constructor 
+ Book(){
+    bookName();
+    bookAuthor();
+    totalCopies();
+    availaibleCopies();
+
+ }
+ // parametrized constrcutir 
+ Book( string b, string a, int tc, int ac){
+    book_name = b;
+    book_author = a;
+    total_copies = tc;
+    availaible_copies = ac;
+
+ }
+
+ // Copy constructor 
+ Book(Book &b) {
+    book_name = b.book_name;
+    book_author = b.book_author;
+    total_copies = b.total_copies;
+    availaible_copies = b.availaible_copies;
+ }
 
  void bookName() {
     cout << "Enter the book name : ";
@@ -27,8 +59,9 @@ class Book {
     cin >> total_copies;
  }
 
- int availaibleCopies() {
-    cout << "Availaible copies of books are : " << availaible_copies;
+ void availaibleCopies() {
+    cout << "Availaible copies of books are : ";
+    cin >> availaible_copies;
  }
 
  void borrow_book(){
@@ -55,42 +88,45 @@ class Book {
 };
 
 int main() {
-    char ch;
-    Book b1;
-
-      b1.bookName();
-        cout << endl;
+     char ch;
+    // Parametrized Constructor 
+  //  Book b1( "ALi", "Aslam", 15, 2);
+   
+   // Copy Constructor 
+   // Book b2 = b1;
+   // Default constructor 
+  //  Book b3;
+   
+  // Displaying it 
+   // b1.display();
+ 
+   // cout << endl;
+   // Displaying Copy Constructor 
+   //b2.display();
+   //cout << endl;
     
-        b1.bookAuthor();
-        cout << endl;
+   // Displaying Default Constructir 
+   /// b3.display();
 
-        b1.totalCopies();
-        cout << endl;
+   Book b1;
 
-        b1.availaibleCopies();
-        cout << endl;
 
     while(1) {
-        cout <<  " --- Library Management system : --- " << endl;
-        cout << "Do you want to borrow the book" << endl;
-        cin >> ch;
-        if(ch == 'y'){
+        cout << "--- Library management system. --- " << endl;
+        cout << "Select any one option. " << endl;
+        cout << "Do you want to borrow book." << endl;
+        cout << "y or n ? " << endl;
+        cin >> ch; 
+
+        if(ch == 'y') {
             b1.borrow_book();
         }
         else {
-            b1.availaibleCopies();
+            b1.display();
+            break;
+
         }
-
-
-        
-
-
-
-
     }
-     
-
-    
   
 
 
