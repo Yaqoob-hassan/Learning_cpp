@@ -83,14 +83,16 @@ class Book {
     return true;
  }
 
- void display() {
-    cout << "Book name is :" << book_name << endl;
+ void display();
+
+};
+
+void Book :: display() {
+   cout << "Book name is :" << book_name << endl;
     cout << "Book author is :" << book_author << endl;
     cout << "Total copies are :" << total_copies << endl;
     cout << "Availaible copies are : " << availaible_copies << endl;
- }
-
-};
+}
 
 
 class Library {
