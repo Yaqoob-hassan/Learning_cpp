@@ -20,11 +20,8 @@ class student {
         cin >> name;
     }
 
-    void Department() {
-        cout << "Enter your department :";
-        cin >> department;
-    }
-
+    void Department();
+      
     void display();
 
 };
@@ -33,6 +30,11 @@ void student :: display() {
         cout << "Registration no is :" << regno << endl;
         cout << "Registration no is :" << name << endl;
         cout << "Registration no is :" << department << endl;
+}
+
+void student :: Department() {
+        cout << "Enter your department :";
+        cin >> department;
 }
 
 int main() {

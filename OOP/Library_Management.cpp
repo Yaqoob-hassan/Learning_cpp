@@ -92,14 +92,28 @@ class Book {
 
 };
 
-// class Library {
-//    private:
 
+class Library {
+   private:
 
+   int book[10];
 
-//    public: 
+   int count = 0;
+   string book_name;
+   string author_name;
 
-// }
+   public:
+
+   void add_book() {
+      cout << "Enter book name :";
+      cin >> book_name;
+
+      cout << "Enter author name :";
+      cin >> author_name;
+
+   }
+
+}
 
 int main() {
      int n;
