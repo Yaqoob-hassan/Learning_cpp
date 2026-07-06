@@ -25,14 +25,15 @@ class student {
         cin >> department;
     }
 
-    void display() {
+    void display();
+
+};
+
+void student :: display() {
         cout << "Registration no is :" << regno << endl;
         cout << "Registration no is :" << name << endl;
         cout << "Registration no is :" << department << endl;
-
-    }
-
-};
+}
 
 int main() {
     student s1;
