@@ -118,6 +118,7 @@ class Library {
 }
 
 int main() {
+   int x; 
      int n;
     // Parametrized Constructor 
   //  Book b1( "ALi", "Aslam", 15, 2);
