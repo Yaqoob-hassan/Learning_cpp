@@ -70,56 +70,80 @@ class Student {
      }
 };
 
-class Mark : public Student {
-    private: 
-    int marks;
+class Subject : public Student {
+    protected:
+    int chemistry;
+    int  math;
+    int  physics;
+    int urdu;
+    int english;
 
     public: 
-    // parametrized Constructor  -- Firsrt calling the parent constructor than --- > Child 
-    Mark(int r, string n, int m) : Student(r, n) {
-        marks = m;
+    
+    Subject(int r, string n) : Student(r, n) {
     }
+    void marks_in_subject() {
+        cout << "Enter marks in math :" ;
+        cin >> math;
+        cout << "Enter marks in physics :";
+        cin >> physics;
+        cout << "Enter marks in chemistry :";
+        cin >> chemistry;
+        cout << "Enter marks in urdu :";
+        cin >> urdu;
+        cout << "Enter marks in english :";
+        cin >> english;
+    }
+   void display_info() {
+    cout << "Student name is :" << name << endl;
+    cout << "Student roll number is :" << rollnumber << endl;
+    cout << "Marks in math is :" << math << endl;
+    cout << "Marks in physics is :" << physics << endl;
+    cout << "Marks in chemistry is :" << chemistry << endl;
+    cout << "Marks in urdu is :" << urdu << endl;
+    cout << "Marks in english is :" << english << endl;
+   }
 
-    void display() {
-       display_Info();
-       cout << "Student marks are : " << marks << '\n';
-    }
-
-    void calculate_grade() {
-        if(marks > 90) {
-            cout << "Your grade is : A+." << endl;
-        }
-        else if(marks > 80) {
-            cout << "Your grade is : A." << endl;
-        }
-        else if(marks > 70) {
-             cout << "Your grade is : B" << endl;
-        }
-        else if(marks > 60) {
-            cout << "Your grade is : C" << endl;
-        }
-        else if(marks > 50) {
-            cout << "Your grade is : D" << endl;
-        }
-        else {
-            cout << "Fail." << endl;
-        }
-    }
+    // ~Subject()  {
+    //     cout << "Subject object deleted." << endl;
+    // }
 
 };
 
+//   void display() {
+//        display_Info();
+//        cout << "Student marks are : " << marks << '\n';
+//     }
+
+//     void calculate_grade() {
+//         if(marks > 90) {
+//             cout << "Your grade is : A+." << endl;
+//         }
+//         else if(marks > 80) {
+//             cout << "Your grade is : A." << endl;
+//         }
+//         else if(marks > 70) {
+//              cout << "Your grade is : B" << endl;
+//         }
+//         else if(marks > 60) {
+//             cout << "Your grade is : C" << endl;
+//         }
+//         else if(marks > 50) {
+//             cout << "Your grade is : D" << endl;
+//         }
+//         else {
+//             cout << "Fail." << endl;
+//         }
+//     }
 
 
 int main() {
 
-    Mark m1(4500, "ALi", 80);
+    Subject s1(4550, "ALi");
     cout << "--- Student information. --- " << endl;
-    m1.display(); 
+    s1.marks_in_subject();
+    s1.display_info(); 
     cout << endl;
-    cout << "Student result base on grade. " << endl;
-    m1.calculate_grade();
-    cout << endl; 
-    //s1.display_Info();
 
     return 0;
 }
