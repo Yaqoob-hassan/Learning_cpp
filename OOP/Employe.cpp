@@ -20,5 +20,10 @@ class Employe {
 };
 
 int main() {
+    Employe e1;
+
+    e1.emp_data();
+
+    return 0;
     
 }
