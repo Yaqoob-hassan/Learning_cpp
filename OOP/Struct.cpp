@@ -12,26 +12,26 @@ using namespace std;
 
 struct Point
 {
-    int x;
-    int y;
+    int x; // Two varaibles 
+    int y; // As int has 4 bytes so total memory will be consume 8 bytes 
 
-    void Enter_coordinate() {
+    void Enter_coordinate() { // Function to enter coordinates  
         cout << "Enter x coordiantes :" ;
         cin >> x ;
         cout << "Enter y coordinates :"; cin >> y ;
     }
 
-    void display(string Point) {
-        cout << "Coordinates for : "<< Point << " are :" << x << ", " << y << endl;
+    void display(string name )  { // Displaying Coordinates  
+        cout << "Coordinates for : "<< name << " are :" << x << ", " << y << endl;
     }
-    void sum_display() {
+    void sum_display() {  // Displaying Sum of P3 
         cout << "Coordinatea for p1 + p2 are :" << x << ", " << y << endl;
     }
 };
 
 
 int main() {
-    Point p1, p2, p3;
+    Point p1, p2, p3; // Three objects    ---[ one object 8 bytes ] --> [ second 8 bytes ] -- > [ third 8 bytes ]
     p1.Enter_coordinate();
     p2.Enter_coordinate();
 
