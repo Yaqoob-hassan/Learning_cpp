@@ -18,18 +18,37 @@ struct Time
     int seconds;
    
     void Enter_time() {
+        
+        while(true) {
 
         cout << "Enter hours ( 0 -- 24 ) :";
         cin >> hours;  
-
         
-
-        cout << "Enter minutes :";
+        if(hours > 24 ) {
+            cout << "Enter hours again :" << endl; 
+            continue;
+        }
+        
+        
+        cout << "Enter minutes ( 0 - 60 ) :";
         cin >> minutes; 
 
-        cout << "Enter seconds :";
+          if( minutes > 60  ) {
+            cout << "Enter minutes  again :" << endl; 
+            continue;
+        }
+       
+
+     
+        cout << "Enter seconds ( 0 - 60 ):";
         cin >> seconds;  
+
+           if(seconds >  60  ) {
+            cout << "Enter seconds   again :" << endl; 
+            continue;
+        }
     }
+}
 
 
     void display() {
