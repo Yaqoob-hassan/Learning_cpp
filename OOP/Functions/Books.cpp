@@ -45,6 +45,7 @@ void Status(const Books &book) {
     cout << "Total time borrow book are :" << book.borrow_books << endl;
      cout << " ------------------------------------------------- " << endl; 
 }
+
 void copy_book(Books &to ) {
         to.total_copies += 1;
         to.availabile_copies += 1; 
@@ -85,6 +86,9 @@ void transferBooks(Books &from, Books &to) {
 
 int main() {
     Books b1, b2; 
+    b1.title = "Prince"; 
+    b2.title = "Power"; 
+    
     BorrowBook(b1); 
 
     ReturnBook(b1); 
