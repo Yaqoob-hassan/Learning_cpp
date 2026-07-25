@@ -11,7 +11,7 @@ struct Books {
 
 void BorrowBook(Books &book) {
      cout << " ------------------------------------------------- " << endl; 
-    if(book.availabile_copies < 0) {
+    if(book.availabile_copies ==  0) {
         cout << "Sorry, we are not availaible." << endl;
        return;   
     }
@@ -28,7 +28,7 @@ void BorrowBook(Books &book) {
 void ReturnBook(Books &book) {
      cout << " ------------------------------------------------- " << endl; 
     if(book.availabile_copies == book.total_copies) {
-        cout << "You cant return the book" << endl;
+        cout << "You cant return book." << endl; 
         return; 
     }
     book.availabile_copies += 1;
@@ -45,6 +45,16 @@ void Status(const Books &book) {
     cout << "Total time borrow book are :" << book.borrow_books << endl;
      cout << " ------------------------------------------------- " << endl; 
 }
+void copy_book(Books &to ) {
+        to.total_copies += 1;
+        to.availabile_copies += 1; 
+
+        cout << "Total copies are now :" << to.total_copies << endl;
+        cout << "Availaible copies are now :" << to.availabile_copies << endl;
+
+        cout << "Sended book to " << to.title << endl;
+}
+
 
 void transferBooks(Books &from, Books &to) {
      cout << " ------------------------------------------------- " << endl; 
@@ -53,16 +63,16 @@ void transferBooks(Books &from, Books &to) {
 
         cout << "How many copies to transfer  :" ; cin >> copies; 
 
-        if( copies < 0 || copies > from.availabile_copies ) {
+        if( copies < 0 || copies > from.availabile_copies  ) {
             cout << "Not availaible that much copy." << endl;
             continue;
         }
         break;
     }
 
-    for(int i = 0; i <= copies; i ++) {
+    for(int i = 0; i < copies; i ++) {
         BorrowBook(from);
-        ReturnBook(from); 
+        copy_book(to); 
     }
 
    
