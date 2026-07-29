@@ -85,6 +85,8 @@ class Book {
 
  void display();
 
+ ~Book();  
+
 };
 
 void Book :: display() {
@@ -114,11 +116,9 @@ class Library {
       cin >> author_name;
 
    }
-
-}
+};
 
 int main() {
-   int x; 
      int n;
     // Parametrized Constructor 
   //  Book b1( "ALi", "Aslam", 15, 2);

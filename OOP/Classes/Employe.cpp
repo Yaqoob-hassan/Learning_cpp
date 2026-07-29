@@ -1,6 +1,11 @@
 #include<iostream>
 using namespace std;
 
+struct emp {
+    int roll;
+    float cost;
+}; 
+
 class Employe {
     private :
     int emp_id;
@@ -21,9 +26,19 @@ class Employe {
 
 int main() {
     Employe e1;
-
+ 
     e1.emp_data();
 
     return 0;
     
 }
+
+
+
+
+
+
+
+
+
+

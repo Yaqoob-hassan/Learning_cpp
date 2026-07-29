@@ -88,6 +88,10 @@ void transferBooks(Books &from, Books &to) {
 }
 
 
+
+
+
+
 void display(Books &book) {
     cout << "Title of the books is :" << book.title << endl;
    cout << "Availaible copies are :" << book.availabile_copies << endl;
