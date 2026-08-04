@@ -42,19 +42,49 @@ class EmailNotification : public Notification {
 
 }; 
 
+class SMSNotification : public Notification {
+
+  private:  
+     
+    string  number; 
+    string message; 
+
+  public:  
+      
+   SMSNotification(string   n, string mes) {
+    number = n; 
+    message = mes; 
+   } 
+    
+     void send() override {
+         cout << "Message sent to phone number :" << number << endl; 
+         cout << "Message is :" << message << endl;
+     }
+
+     int getPriority() override {
+        cout << "Priority is : 02" << endl;
+        return 2; 
+     }
+
+
+
+}; 
+
 int main() {
-    Notification* notification[1];
+    Notification* notification[2];
 
     notification[0] = new EmailNotification("myaqoobh13@gmail.com","visit lahore" );
+
+    notification[1] = new SMSNotification("+923349533858" , "How are u ?");
     
-    for(int i = 0; i < 1; i++) {
+    for(int i = 0; i < 2; i++) {
         cout << " --------------------------------------- " << endl; 
         notification[i]->send(); 
         notification[i]->getPriority(); 
         cout << endl; 
     }
 
-    for(int i = 0; i < 1; i++) {
+    for(int i = 0; i < 2; i++) {
         delete notification[i];
     }
     
