@@ -56,11 +56,30 @@ class Warrior: public Character {
 }; 
 
 
-class healer : public Character {
+class Healer : public Character {
     public:  
-      
+      Healer(string n, int h, int ap) : Character(n, h, ap) {}
+
+      int attack() override {
+        int healamount = 25; 
+        health = health + healamount;
+        cout << name << " heal for 25hp. Health is now " << health << endl;
+        return 0;  
+      }
       
 
+}; 
+
+class Mage: public Character {
+   public: 
+
+   Mage(string n, int h, int ap) : Character(n, h, ap) {}
+
+     int attack() override {
+        int basePower = Character::attack();
+        int bonusPower = basePower + basePower; 
+        return bonusPower;
+     }
 }; 
 
 
@@ -73,12 +92,21 @@ class healer : public Character {
 
 
 int main() {
-    Character* ch[1];
+    Character* ch[4];
 
     ch[0] = new Warrior("Thanos", 100, 44);
+    ch[1] = new Healer("Alpha",100, 45 );
+    ch[2] = new Mage("Beta", 100, 21);
+    ch[3] = new Warrior("Dragon", 100, 45);
 
-    for(int i = 0; i < 1; i++) {
-        ch[i]->attack();
+    // for(int i = 0; i < 4; i++) {
+    //     ch[i]->attack();
+    // } 
+
+    while()
+
+    for(int i = 0; i < 3; i++) {
+        delete ch[i];
     }
 
     return 0; 
