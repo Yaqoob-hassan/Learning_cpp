@@ -92,18 +92,22 @@ class Mage: public Character {
 
 
 int main() {
-    Character* ch[4];
+    Character* ch[3];
+    Character* target = new Character("Dragon", 100, 24);
+
+    for(int i = 0; i < 2; i++) {
+        target[i]->attack(); 
+    }
 
     ch[0] = new Warrior("Thanos", 100, 44);
     ch[1] = new Healer("Alpha",100, 45 );
     ch[2] = new Mage("Beta", 100, 21);
-    ch[3] = new Warrior("Dragon", 100, 45);
 
-    // for(int i = 0; i < 4; i++) {
+    // for(int i = 0; i < 3; i++) {
     //     ch[i]->attack();
     // } 
 
-    while()
+
 
     for(int i = 0; i < 3; i++) {
         delete ch[i];
