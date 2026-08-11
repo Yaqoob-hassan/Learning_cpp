@@ -55,4 +55,7 @@ Destruction is like unstacking — you must remove the top box first, you can't 
 Destroy Car    →  [Engine][Wheels]        (Car's own destructor body runs first)
 Destroy Wheels →  [Engine]                (then members destroyed in reverse)
 Destroy Engine →  [] 
+
+Destruction order (must be the exact reverse of construction)
+
 */
