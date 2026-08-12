@@ -78,7 +78,7 @@ Since interfaces only declare method signatures (no actual data/state to duplica
 C++ chose to allow the risky feature (multiple class inheritance) and hand developers a tool (`virtual`) to manage the risk. Java/C# chose to design the risk away entirely by restricting multiple inheritance to interfaces only.
 
 
-## Q1: Constructor order with parameters + why initializer list is required
+## Q3: Constructor order with parameters + why initializer list is required
 
 ```cpp
 #include<iostream>
@@ -128,7 +128,7 @@ If `: Base(x)` were removed, the compiler would try to silently call `Base()` (n
 
 
 
-## Q2: Function hiding vs function overriding (virtual keyword)
+## Q4: Function hiding vs function overriding (virtual keyword)
 
 ```cpp
 #include<iostream>
