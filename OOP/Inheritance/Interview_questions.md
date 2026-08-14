@@ -191,7 +191,7 @@ Now the compiler defers the decision to runtime (**dynamic dispatch**) — it ch
 
 
 
-## Q6: Diamond Problem — Fix It
+## Q5: Diamond Problem — Fix It
 
 **Task:**
 Create a base class `Person` with a member `string name`. Create two classes `Student : public Person` and `Teacher : public Person`. Create a class `TeachingAssistant : public Student, public Teacher`. First compile without `virtual` to observe the ambiguity error, then fix it using virtual inheritance.
