@@ -187,4 +187,94 @@ Now the compiler defers the decision to runtime (**dynamic dispatch**) — it ch
 |---|---|---|
 | Binding | Static (compile-time) | Dynamic (runtime) |
 | Decision based on | Pointer's declared type | Actual object type |
-| `b->show()` result | Base's version | Derived's version |
+| `b->show()` result | Base's version | Derived's version | 
+
+
+
+## Q6: Diamond Problem — Fix It
+
+**Task:**
+Create a base class `Person` with a member `string name`. Create two classes `Student : public Person` and `Teacher : public Person`. Create a class `TeachingAssistant : public Student, public Teacher`. First compile without `virtual` to observe the ambiguity error, then fix it using virtual inheritance.
+
+---
+
+### Step 1 — Broken version (without `virtual`)
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Person {
+  public:
+    string name;
+};
+
+class Student : public Person {
+
+};
+
+class Teacher : public Person {
+
+};
+
+class TeachingAssistant : public Student, public Teacher {
+
+};
+
+int main() {
+    TeachingAssistant t;
+    t.name = "Ali";   // triggers ambiguity
+
+    return 0;
+}
+```
+
+**Compiler error produced:**
+
+
+**What went wrong:**
+`TeachingAssistant` inherits from both `Student` and `Teacher`, and each of those separately inherited its own full copy of `Person`. This means `TeachingAssistant` ends up containing **two physically distinct copies** of `name` in memory — one reachable through the `Student` path, one through the `Teacher` path. When `t.name` is written, the compiler finds two equally valid candidates and has no way to determine which one is meant — hence "ambiguous." Both "candidate" notes point to the same source line (18) because both copies originate from the same declaration in `Person`; they are two separate runtime copies of the same member, reached via two different inheritance paths.
+
+---
+
+### Step 2 — Fixed version (with `virtual` inheritance)
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class Person {
+  public:
+    string name;
+};
+
+class Student : virtual public Person {
+
+};
+
+class Teacher : virtual public Person {
+
+};
+
+class TeachingAssistant : public Student, public Teacher {
+
+};
+
+int main() {
+    TeachingAssistant t;
+    t.name = "Ali";   // now compiles successfully
+
+    cout << "Name is: " << t.name << endl;
+
+    return 0;
+}
+```
+
+**What changed and why it works:**
+Adding `virtual` to `Student`'s and `Teacher`'s inheritance from `Person` tells the compiler: *"if this class ends up part of a diamond, don't give it its own private copy of the base class — share a single copy across all virtual-inheritance paths."* As a result, `TeachingAssistant` now contains only **one** shared copy of `Person`, so `t.name` unambiguously refers to that single copy. No candidates conflict, and the code compiles and runs correctly.
+
+---
+
+**Key takeaway:**
+The diamond problem occurs whenever a class inherits from two classes that share a common base, causing the base to be duplicated. `virtual` inheritance solves this by making all virtual-inheritance paths share exactly one instance of the common base class, eliminating the duplication and the resulting ambiguity.
+
