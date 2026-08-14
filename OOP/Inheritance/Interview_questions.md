@@ -519,7 +519,7 @@ Notice Case 2 is missing `"Derived destructor."` entirely — this is the exact 
 
 ---
 
-### Q26. What's the practical performance/complexity cost of virtual inheritance?
+### Q11. What's the practical performance/complexity cost of virtual inheritance?
 
 **Answer:**
 Virtual inheritance isn't free — it solves the diamond ambiguity problem, but introduces real overhead compared to normal (non-virtual) inheritance, and it's worth understanding *why* rather than just accepting it as a fact.
@@ -563,7 +563,7 @@ int main() {
 
 ---
 
-### Q11. Can you have a diamond-shaped hierarchy without hitting the ambiguity problem?
+### Q12. Can you have a diamond-shaped hierarchy without hitting the ambiguity problem?
 
 **Answer:**
 Yes, in two specific scenarios — though both are more fragile than simply using `virtual` inheritance, so they're worth knowing conceptually but not recommended as a default approach.
@@ -613,7 +613,7 @@ Notice these are **two different values** — proving there are genuinely two se
 
 ---
 
-### Q12. Why is inheritance sometimes considered a "tighter coupling" than composition, and when should you prefer composition instead?
+### Q13. Why is inheritance sometimes considered a "tighter coupling" than composition, and when should you prefer composition instead?
 
 **Answer:**
 Inheritance creates a relationship that is **fixed at compile time** and deeply tied to implementation details — the derived class doesn't just use the base class, it *becomes* a specialized version of it, inheriting not just its public interface but its entire internal behavior and structure. This creates several coupling risks:
@@ -671,7 +671,7 @@ int main() {
 
 ---
 
-### Q12. What is the "fragile base class problem," and how does it relate to inheritance?
+### Q14. What is the "fragile base class problem," and how does it relate to inheritance?
 
 **Answer:**
 The fragile base class problem describes a situation where **seemingly safe, well-intentioned changes to a base class unexpectedly break derived classes** — even though the person making the change to the base class may have had no idea any derived classes depended on the specific behavior they altered.
@@ -726,7 +726,7 @@ This works fine today. But imagine the `Base` class author later "improves" `add
 
 ---
 
-### Q13. If a derived class object is deleted through a base class pointer without a virtual destructor, but neither class has any dynamically allocated resources or custom cleanup logic — is there still a bug?
+### Q15. If a derived class object is deleted through a base class pointer without a virtual destructor, but neither class has any dynamically allocated resources or custom cleanup logic — is there still a bug?
 
 **Answer:**
 Technically, **no runtime harm occurs** in that specific, narrow case — since there's nothing meaningful for either destructor to actually clean up, skipping the derived destructor doesn't cause an observable leak or crash *right now*. However, most experienced developers and interviewers would still consider this **bad practice**, for two important reasons:
