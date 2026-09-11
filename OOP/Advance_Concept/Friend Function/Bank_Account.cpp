@@ -29,3 +29,43 @@
 // Apply interest to at least one account
 // Display all three accounts' final states
 
+#include<iostream>
+using namespace std;
+
+class Account {
+    private: 
+       string OwnerName;
+       double balance;
+       int AccountNumber;
+       double TotalFeeCharge = 0;
+
+    public: //  Constructor 
+
+        Account(string ON, double bl, int AN, double TFC) {
+            OwnerName = ON;
+            balance = bl;
+            AccountNumber = AN;
+            TotalFeeCharge =TFC = 0;
+        }
+        
+        // Functions 
+        friend void transfer(Account &from, Account &to, double amount);
+
+// Deducts amount from from.balance and adds it to to.balance
+// If the transfer amount is greater than $1000,
+//  charge a 2% fee on the transfer amount, deducted from the sender's balance, and add that fee to from.totalFeesCharged
+// If from.balance is insufficient (including the fee), print an error message and do not perform the transfer at all
+        
+    };
+
+    void transfer(Account &a1, Account &a2, double amount) {
+        if(amount < 0) {
+            cout << "Can't transfer money less than zero." << endl;
+            return;
+        } 
+
+        if(amount > 1000) {
+            double tax = amount * 0.02;
+        }
+    }
+
