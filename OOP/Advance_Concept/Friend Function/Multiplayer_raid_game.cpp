@@ -1,3 +1,6 @@
+/// I am working on this project /// 
+
+
 #include<iostream>
 using namespace std;
 
@@ -56,9 +59,6 @@ friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
             return;
         }
 
-        p.health -= monsterDamage;
-        cout << "Player survive the hit. " << endl;
-        p.monsterDefeated += 1;
 
 
         if(p.health <= 0) {
