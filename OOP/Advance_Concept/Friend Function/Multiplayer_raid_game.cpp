@@ -22,12 +22,9 @@ class Player {
        // Create a constructor that initializes playerName
        // and potionsHeld (health always starts at 100, monstersDefeated at 0, isAlive at true).
         
-       Player(string PN, int h, int ph, int mD, bool Alive) {
+       Player(string PN, int ph) {
         playerName = PN;
-        health = h;
         potionHeld = ph;
-        monsterDefeated = mD;
-        isAlive = Alive;
        }
 
 // Create these friend functions:
@@ -53,11 +50,36 @@ friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
 };
 
     void attackMonster(Player &p, int monsterDamage, int monsterDifficulty) {
-        if(p.isAlive = false) {
+        if(p.isAlive == false) {
+
             cout << "Player is dead. " << endl;
             return;
         }
 
-        int monsterDamage = 18;
+        p.health -= monsterDamage;
+        cout << "Player survive the hit. " << endl;
+        p.monsterDefeated += 1;
+
+
+        if(p.health <= 0) {
+            p.isAlive = false;
+
+            cout << "Player is dead." << endl;
+            return;
+        }
+        else {
+             p.health -= monsterDamage;
+        cout << "Player survive the hit. " << endl;
+        p.monsterDefeated += 1;
+        }
+
+        if(monsterDifficulty > 7) {
+            cout << "Bonus round." << endl;
+            cout << "Player is rewarded with a extra potion Held." << endl;
+            p.potionHeld += 1;
+            return;
+        }
         
     }
+
+    
