@@ -1,21 +1,3 @@
-
-
-
-
-
-
-
-
-
-// In main():
-// Create three accounts with different starting balances
-// Perform at least four transfers between different pairs of accounts, including:
-// One transfer under $1000 (no fee)
-// One transfer over $1000 (fee applies)
-// One transfer that should fail due to insufficient funds
-// Apply interest to at least one account
-// Display all three accounts' final states
-
 // Create a class Account with private members:
 // string ownerName
 // double balance
@@ -177,9 +159,6 @@ class Account {
      display(B);
 
      display(C);
-
-
-
 
 
         return 0;
