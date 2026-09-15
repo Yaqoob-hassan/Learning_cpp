@@ -48,6 +48,7 @@ class Player {
 // p.potionsHeld by 1.
 
 friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
+friend void UsepotionHeld(Player &p);
 
 
 };
@@ -79,12 +80,36 @@ friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
 
             }
         }
+
+        void UsepotionHeld(Player &p) {
+            if(p.isAlive == false ) {
+                cout << "Player is dead. Cant use the healing potion." << endl;
+                return;
+            }
+
+            if(p.potionHeld == 0) {
+                cout << "Cant increase health. As potion health is zero." << endl;
+                return; 
+            }
+            else {
+                p.potionHeld -= 1;
+                p.health += 30;
+                if(p.health > 100) {
+                    p.health = 100;
+                }
+
+                cout << "Current health is :" << p.health << endl;
+                return;
+            }
+        }
       
 
         int main() {
             Player p1("Shadow", 4 );
 
-            attackMonster(p1, 101,6);
+            attackMonster(p1, 50,6);
+
+            UsepotionHeld(p1);
 
 
 
