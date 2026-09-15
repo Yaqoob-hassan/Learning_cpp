@@ -61,25 +61,35 @@ friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
 
 
 
+        p.health -= monsterDamage;
         if(p.health <= 0) {
             p.isAlive = false;
-
             cout << "Player is dead." << endl;
+            p.health = 0;
             return;
         }
         else {
-             p.health -= monsterDamage;
-        cout << "Player survive the hit. " << endl;
-        p.monsterDefeated += 1;
-        }
+           cout << "Player survive the hit." << endl;
+           p.monsterDefeated += 1;
+           
+              if(monsterDifficulty > 7) {
+                cout << "Bonus round." << endl;
+                p.potionHeld += 1;
+              }
 
-        if(monsterDifficulty > 7) {
-            cout << "Bonus round." << endl;
-            cout << "Player is rewarded with a extra potion Held." << endl;
-            p.potionHeld += 1;
-            return;
+            }
         }
-        
-    }
+      
 
+        int main() {
+            Player p1("Shadow", 4 );
+
+            attackMonster(p1, 101,6);
+
+
+
+            return 0;
+
+
+        }
     
