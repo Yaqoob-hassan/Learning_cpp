@@ -23,6 +23,7 @@ class Player {
 friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
 friend void UsepotionHeld(Player &p);
 friend void revive(Player &p, Player &healer);
+friend void display(Player &p);
 
 };
 
@@ -92,6 +93,16 @@ friend void revive(Player &p, Player &healer);
                 cout << "Player can't be revive." << endl;
             }
         }
+
+        void display(Player &p) {
+            cout << " ------------------------------------------- " << endl;
+            cout << "Player name is :" << p.playerName << endl;
+            cout << "Player health is : " << p.health << endl;
+            cout << "Healing potion player have is :" << p.potionHeld << endl;
+            cout << "Player is alive :" << p.isAlive << endl;
+            cout << "Monster defeated by player is :" << p.monsterDefeated << endl;
+
+        }
       
 
                 int main() {
@@ -102,8 +113,10 @@ friend void revive(Player &p, Player &healer);
 
             UsepotionHeld(p1);
 
-            revive(p1, p2);
+            //revive(p1, p2);
+            
 
+            display(p1);
 
 
 
