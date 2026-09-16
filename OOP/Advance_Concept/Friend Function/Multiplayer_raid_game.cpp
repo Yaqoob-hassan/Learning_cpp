@@ -4,14 +4,6 @@
 #include<iostream>
 using namespace std;
 
-
-// Create a class Player with private members:
-// string playerName
-// int health (starts at 100, max is always 100)
-// int potionsHeld
-// int monstersDefeated (starts at 0)
-// bool isAlive (starts at true)
-
 class Player {
 
    private: 
@@ -22,34 +14,15 @@ class Player {
       bool isAlive = true;
 
     public: 
-       // Create a constructor that initializes playerName
-       // and potionsHeld (health always starts at 100, monstersDefeated at 0, isAlive at true).
         
        Player(string PN, int ph) {
         playerName = PN;
         potionHeld = ph;
        }
 
-// Create these friend functions:
-// void attackMonster(Player &p, int monsterDamage, int monsterDifficulty)
-
-// If p.isAlive is false, print a message that a dead player can't attack, and return immediately.
-
-// Reduce p.health by monsterDamage.
-
-// If p.health drops to 0 or below, set p.health = 0, set p.isAlive = false,
-
-//  print a "wiped" message, and return — a defeated monster shouldn't be counted if the player died in the same fight.
-
-// Otherwise (player survived the hit), the player defeats the monster: increase p.monstersDefeated by 1.
-
-// If monsterDifficulty is greater than 7 (a "hard" monster), the player earns a bonus potion for the win — increase 
-
-// p.potionsHeld by 1.
-
 friend void attackMonster(Player &p, int monsterDamage, int monsterDifficulty);
 friend void UsepotionHeld(Player &p);
-
+friend void revive(Player &p, Player &healer);
 
 };
 
@@ -59,8 +32,6 @@ friend void UsepotionHeld(Player &p);
             cout << "Player is dead. " << endl;
             return;
         }
-
-
 
         p.health -= monsterDamage;
         if(p.health <= 0) {
@@ -102,14 +73,37 @@ friend void UsepotionHeld(Player &p);
                 return;
             }
         }
+
+        void revive(Player &p, Player &healer ) {
+
+            if(p.isAlive == true) {
+                cout << "Player is alive. There is no need to revive." << endl;
+                return;
+            }
+
+            if(p.isAlive == false & healer.potionHeld >= 2) {  
+                 cout << "Player is revive now. " << endl;
+                 cout << " 2 Potion Held have been detected from you." << endl;
+                 p.potionHeld -= 2;
+                 p.health = 100;
+                 return;
+            }
+            else {
+                cout << "Player can't be revive." << endl;
+            }
+        }
       
 
-        int main() {
+                int main() {
             Player p1("Shadow", 4 );
+            Player p2("Monster", 8);
 
-            attackMonster(p1, 50,6);
+            attackMonster(p1, 200 ,6);
 
             UsepotionHeld(p1);
+
+            revive(p1, p2);
+
 
 
 
