@@ -1,5 +1,3 @@
-/// I am working on this project /// 
-
 
 #include<iostream>
 using namespace std;
@@ -109,11 +107,11 @@ friend void display(Player &p);
             Player p1("Shadow", 4 );
             Player p2("Monster", 8);
 
-            attackMonster(p1, 200 ,6);
+            attackMonster(p1,50  ,6);
 
             UsepotionHeld(p1);
 
-            //revive(p1, p2);
+            revive(p1, p2);
             
 
             display(p1);
