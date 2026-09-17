@@ -116,6 +116,8 @@ friend void display(Player &p);
 
             display(p1);
 
+            display(p2);
+
 
 
             return 0;
